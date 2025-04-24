@@ -121,6 +121,30 @@ export const formFields: INodeProperties = {
 					required: true,
 				},
 				{
+					displayName: 'Minimum Value',
+					name: 'minValue',
+					type: 'number',
+					default: '',
+					description: 'The minimum allowed value for this number field',
+					displayOptions: {
+						show: {
+							fieldType: ['number'],
+						},
+					},
+				},
+				{
+					displayName: 'Maximum Value',
+					name: 'maxValue',
+					type: 'number',
+					default: '',
+					description: 'The maximum allowed value for this number field',
+					displayOptions: {
+						show: {
+							fieldType: ['number'],
+						},
+					},
+				},
+				{
 					displayName: 'Element Name',
 					name: 'elementName',
 					type: 'string',
@@ -318,7 +342,7 @@ export const formTriggerPanel = {
 	header: 'Pull in a test form submission',
 	executionsHelp: {
 		inactive:
-			"Form Trigger has two modes: test and production. <br /> <br /> <b>Use test mode while you build your workflow</b>. Click the 'Test step' button, then fill out the test form that opens in a popup tab. The executions will show up in the editor.<br /> <br /> <b>Use production mode to run your workflow automatically</b>. <a data-key=\"activate\">Activate</a> the workflow, then make requests to the production URL. Then every time there's a form submission via the Production Form URL, the workflow will execute. These executions will show up in the executions list, but not in the editor.",
+			"Form Trigger has two modes: test and production. <br /> <br /> <b>Use test mode while you build your workflow</b>. Click the 'Test step' button, then fill out the test form that opens in a popup tab. The executions will show up in the editor.<br /> <br /> <b>Use production mode to run your workflow automatically</b>. <a data-key=\"activate\">Activate</a> the workflow, then make requests to the production URL. Then every time there's a form submission via the Production Form URL, the workflow will execute. These executions will show up in the editor.",
 		active:
 			"Form Trigger has two modes: test and production. <br /> <br /> <b>Use test mode while you build your workflow</b>. Click the 'Test step' button, then fill out the test form that opens in a popup tab. The executions will show up in the editor.<br /> <br /> <b>Use production mode to run your workflow automatically</b>. <a data-key=\"activate\">Activate</a> the workflow, then make requests to the production URL. Then every time there's a form submission via the Production Form URL, the workflow will execute. These executions will show up in the executions list, but not in the editor.",
 	},
@@ -395,5 +419,5 @@ export const respondWithOptions: INodeProperties = {
 
 export const appendAttributionToForm: INodeProperties = {
 	...appendAttributionOption,
-	description: 'Whether to include the link “Form automated with n8n” at the bottom of the form',
+	description: 'Whether to include the link "Form automated with n8n" at the bottom of the form',
 };

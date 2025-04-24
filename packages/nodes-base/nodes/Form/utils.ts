@@ -210,6 +210,10 @@ export function prepareFormData({
 		} else {
 			input.isInput = true;
 			input.type = fieldType as 'text' | 'number' | 'date' | 'email';
+			if (fieldType === 'number') {
+				input.minValue = field.minValue;
+				input.maxValue = field.maxValue;
+			}
 		}
 
 		formData.formFields.push(input as FormTriggerInput);
@@ -233,7 +237,7 @@ export const validateResponseModeConfiguration = (context: IWebhookFunctions) =>
 			new Error('No Respond to Webhook node found in the workflow'),
 			{
 				description:
-					'Insert a Respond to Webhook node to your workflow to respond to the form submission or choose another option for the “Respond When” parameter',
+					'Insert a Respond to Webhook node to your workflow to respond to the form submission or choose another option for the "Respond When" parameter',
 			},
 		);
 	}
@@ -244,7 +248,7 @@ export const validateResponseModeConfiguration = (context: IWebhookFunctions) =>
 			new Error(`${context.getNode().name} node not correctly configured`),
 			{
 				description:
-					'Set the “Respond When” parameter to “Using Respond to Webhook Node” or remove the Respond to Webhook node',
+					'Set the "Respond When" parameter to "Using Respond to Webhook Node" or remove the Respond to Webhook node',
 			},
 		);
 	}

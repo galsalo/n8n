@@ -535,6 +535,8 @@
 										name='{{id}}'
 										value="{{defaultValue}}"
 										placeholder="{{placeholder}}"
+										{{#if minValue}}min="{{minValue}}"{{/if}}
+										{{#if maxValue}}max="{{maxValue}}"{{/if}}
 									/>
 									<p class='{{errorId}} error-hidden'>
 										This field is required
@@ -626,10 +628,26 @@
 						errorElement.textContent = 'Enter only numbers in this field';
 						errorElement.classList.add('error-show');
 						return false;
-					} else {
-						errorElement.classList.remove('error-show');
-						return true;
 					}
+					
+					const numValue = parseFloat(value);
+					const min = input.getAttribute('min');
+					const max = input.getAttribute('max');
+					
+					if (min !== null && numValue < parseFloat(min)) {
+						errorElement.textContent = `Value must be greater than or equal to ${min}`;
+						errorElement.classList.add('error-show');
+						return false;
+					}
+					
+					if (max !== null && numValue > parseFloat(max)) {
+						errorElement.textContent = `Value must be less than or equal to ${max}`;
+						errorElement.classList.add('error-show');
+						return false;
+					}
+					
+					errorElement.classList.remove('error-show');
+					return true;
 				} else if (value === '') {
 					errorElement.textContent = 'This field is required';
 					errorElement.classList.add('error-show');

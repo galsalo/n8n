@@ -15,6 +15,8 @@ export type FormTriggerInput = {
 	acceptFileTypes?: string;
 	multipleFiles?: 'multiple' | '';
 	placeholder?: string;
+	minValue?: number;
+	maxValue?: number;
 };
 
 export type FormTriggerData = {

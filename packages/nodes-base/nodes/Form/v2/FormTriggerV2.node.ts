@@ -31,6 +31,20 @@ const useWorkflowTimezone: INodeProperties = {
 	description: "Whether to use the workflow timezone set in node's settings rather than UTC",
 };
 
+const ALLOWED_FORM_FIELDS_KEYS = [
+	'fieldLabel',
+	'fieldType',
+	'placeholder',
+	'fieldOptions',
+	'multiselect',
+	'multipleFiles',
+	'acceptFileTypes',
+	'formatDate',
+	'requiredField',
+	'minValue',
+	'maxValue',
+];
+
 const descriptionV2: INodeTypeDescription = {
 	displayName: 'n8n Form Trigger',
 	name: 'formTrigger',
